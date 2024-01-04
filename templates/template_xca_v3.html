@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HT Score</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
+  <header>
+      <div class="container">
+        <h1 class="logo">Nickarana's Hattrick Stats</h1>
+        <strong><nav>
+          <ul class="menu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('masters_') }}">Masters</a></li>
+            <li><a href="{{ url_for('high_hat_') }}">High HatStats</a></li>
+          </ul>
+        </nav></strong>
+      </div>
+    </header>
+    <body>
+    <div class="extreme_ca">
+       <h1 style="line-height:1.0">Extreme CA Top Ratings</h1>
+       <p style="line-height:1.0">Scroll down to see the top 100 ratings starting from S69</p>
+        <form action="{{ url_for('extreme_ca_filter_')}}" style="line-height:1.0" method="GET">
+            Filter here on TeamID, TeamName, Country, Season, Round, or Competition (L=League,C=Cup,P=Promotion,H=Hattrick Masters, I=International) <br><br>Use a semicolon for multiple filters, such as ooster;S85 <input type='text' name='filter' placeholder='enter value here; examples: 145644, ooster, USA, S85, R9, I, tac_CA, ooster;S85' required/><br>            
+            <button type="submit" class="btn btn-primary">FILTER</button>
+       </form>
+    </div>
+    <div class="extreme_caT">
+        <form action="{{ url_for('extreme_ca_team_')}}" style="line-height:1.0" method="GET">
+            Filter here to see stats by Team.  Enter a filter or enter ALL to see for all teams. <input type='text' name='filter_team' placeholder='enter value here; examples: USA, S85, R9, tac_CA, I, S74;R9' required/><br>            
+            <button type="submit" class="btn btn-primary">TEAM FILTER</button>
+       </form>
+    </div>
+    {% for table in tables %}
+          <b>{{ titles[loop.index-1]|safe }}</b>
+          <br>
+          {{ table|safe }}
+    {% endfor %}
+</html>

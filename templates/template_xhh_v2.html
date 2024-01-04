@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HT Score</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
+  <header>
+      <div class="container">
+        <h1 class="logo">Nickarana's Hattrick Stats</h1>
+        <strong><nav>
+          <ul class="menu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('masters_') }}">Masters</a></li>
+            <li><a href="{{ url_for('extreme_ca_') }}">Extreme CA</a></li>
+          </ul>
+        </nav></strong>
+      </div>
+    </header>
+    <body>
+    <div class="extreme_ca">
+       <h1 style="line-height:1.0">High Hatstats (550+)</h1>
+       <p style="line-height:1.0">Scroll down to see the top 100 ratings starting from S69</p>
+        <form action="{{ url_for('high_hat_filter_')}}" style="line-height:1.0" method="GET">
+            Filter matches here on TeamID, Team Name, Country, Season, Round, Tactic (e.g. tac_CA, tac_LS), or Competition (L=League,C=Cup,P=Promotion,H=Hattrick Masters, I=International) <br><br>Use a semicolon for multiple filters, such as varegg;S74 <input type='text' name='xca_filter_value' placeholder='enter value here; examples: 145644, ooster, USA, S85, R9, tac_CA, I, varegg;S74' required/><br>            
+            <button type="submit" class="btn btn-primary">FILTER</button>
+       </form>
+    </div>
+    <div class="extreme_caT">
+        <form action="{{ url_for('high_hat_team_')}}" style="line-height:1.0" method="GET">
+            Click here to see stats by Team.  Enter a filter or click TEAM FILTER to see for all teams. <input type='text' name='xcat_filter_value' placeholder='enter value here; examples: 145644, ooster, USA, S85, R9, tac_CA, I, varegg;S74' required/><br>            
+            <button type="submit" class="btn btn-primary">TEAM FILTER</button>
+       </form>
+    </div>
+    {% for table in tables %}
+          <b>{{ titles[loop.index-1]|safe }}</b>
+          <br>
+          {{ table|safe }}
+    {% endfor %}
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HT Score</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
+  <header>
+      <div class="container">
+        <h1 class="logo">Nickarana's Hattrick Stats</h1>
+        <strong><nav>
+          <ul class="menu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('extreme_ca_') }}">Extreme CA</a></li>
+          </ul>
+        </nav></strong>
+      </div>
+    </header>
+    <div class="home">
+       <h1>Match Predictor</h1>
+    </div>
+    {% for table in tables %}
+          <br>
+          <br>
+          <b>{{ titles[loop.index-1]|safe }}</b>
+          <br>
+          {{ table|safe }}
+    {% endfor %}
+</html>
