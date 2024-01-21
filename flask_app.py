@@ -2,9 +2,9 @@ from flask import Flask, request,render_template
 from pychpp import CHPP
 import pandas as pd
 import numpy as np
-from pa_match_predict_v4 import match_predict
-from pa_xca_v5 import XCA,XCA_100,XCA_filter,XCAT
-import pa_hts_mappings_v4 as htsm
+from pa_match_predict import match_predict
+from pa_xca import XCA,XCA_100,XCA_filter,XCAT
+import pa_hts_mappings as htsm
 
 app = Flask(__name__)
 
